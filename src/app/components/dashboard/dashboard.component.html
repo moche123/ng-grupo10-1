@@ -1,0 +1,27 @@
+<h2>dashboard works!</h2>
+
+<!-- DIRECTIVAS => if, for, while ==> estructurales (ng container*) -->
+<section class="about-container">
+
+    <app-about *ngIf="showAbout" [salary]="amount" (infoChild)="receivedFromChild($event)"></app-about>
+</section>
+
+<button (click)="navigateRouteNotFound()">IR A UNA RUTA IMPOSIBLE</button>
+<button (click)="hideAbout()">Ocultar el about</button>
+
+<h1 [ngClass]="{
+    'light': messageReceived === '',
+    'dark': messageReceived !== ''    
+    }" >Mensaje recibido por el hijo: {{messageReceived}}</h1>
+
+    <hr><hr><hr>
+<!-- 
+<ng-container *ngFor="let pokemon of pokemons">
+    {{pokemon.name}}
+</ng-container> -->
+<!-- <div *ngFor="let pokemon of pokemons">
+    {{pokemon.name}}
+</div> -->
+<div *ngFor="let pokemon of ( pokemons$ | async )">
+    {{pokemon.name}}
+</div>
